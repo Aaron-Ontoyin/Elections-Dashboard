@@ -1,0 +1,4 @@
+- year and pie
+- years and bar
+- party and top N polling stations
+- Top N stations in number of voters change from year to year
