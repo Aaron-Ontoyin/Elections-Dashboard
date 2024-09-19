@@ -5,7 +5,25 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    layout="wide",
+    page_title="Election Data Analysis",
+    page_icon="📊",
+)
+hide_streamlit_style = """
+    <style>
+
+        header{visibility:hidden;}
+        .main {
+            margin-top: -120px;
+            padding-top:10px;
+        }
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 if "pres_data" not in ss:
     ss.pres_data = pd.read_excel("data/combined_pres.xlsx")
@@ -94,7 +112,10 @@ def plot_top_n_stations_by_voter_change(top_n, from_year, to_year, change_by):
 st.title("Election Data Analysis")
 
 data = st.radio(
-    "Choose Data", ["Presidential", "Parliamentary"], horizontal=True, label_visibility="hidden"
+    "Choose Data",
+    ["Presidential", "Parliamentary"],
+    horizontal=True,
+    label_visibility="hidden",
 )
 data = ss.pres_data if data == "Presidential" else ss.parl_data
 
